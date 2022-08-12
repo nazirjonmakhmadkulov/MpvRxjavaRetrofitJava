@@ -22,7 +22,6 @@ import com.nazirjon.mpvrxjavaretrofitjava.models.MovieResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 public class SearchActivity extends AppCompatActivity implements SearchViewInterface {
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -41,13 +40,11 @@ public class SearchActivity extends AppCompatActivity implements SearchViewInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
-
         setupViews();
         setupMVP();
     }
 
     private void setupViews() {
-
         setSupportActionBar(toolbar);
         rvQueryResult.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -59,9 +56,7 @@ public class SearchActivity extends AppCompatActivity implements SearchViewInter
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
      getMenuInflater().inflate(R.menu.menu_search,menu);
-
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) menu.findItem(R.id.action_search)
                 .getActionView();
@@ -69,16 +64,12 @@ public class SearchActivity extends AppCompatActivity implements SearchViewInter
                 .getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setQueryHint("Enter Movie name..");
-
         searchPresenter.getResultsBasedOnQuery(searchView);
-
-
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
         if(id == R.id.action_search){
             return true;

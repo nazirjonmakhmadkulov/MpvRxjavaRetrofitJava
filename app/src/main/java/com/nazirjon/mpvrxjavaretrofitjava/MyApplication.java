@@ -7,26 +7,21 @@ import com.nazirjon.mpvrxjavaretrofitjava.di.components.DaggerApplicationCompone
 import com.nazirjon.mpvrxjavaretrofitjava.di.modules.ApplicationModule;
 
 public class MyApplication extends Application {
-
     private static ApplicationComponent applicationComponent;
 
-      public MyApplication(){
-
-      }
+    public MyApplication() {
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         applicationComponent = DaggerApplicationComponent
-                                .builder()
-                                .applicationModule(new ApplicationModule(this))
-                                .build();
-
+                .builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
     }
 
-    public ApplicationComponent getApplicationComponent(){
-          return applicationComponent;
-      }
-
+    public ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
+    }
 }

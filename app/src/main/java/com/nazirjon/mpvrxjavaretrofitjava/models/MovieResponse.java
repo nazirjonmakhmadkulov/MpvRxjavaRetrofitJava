@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MovieResponse {
-
     @SerializedName("page")
     @Expose
     private Integer page;
@@ -20,20 +19,9 @@ public class MovieResponse {
     @Expose
     private List<Result> results = null;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public MovieResponse() {
     }
 
-    /**
-     *
-     * @param results
-     * @param totalResults
-     * @param page
-     * @param totalPages
-     */
     public MovieResponse(Integer page, Integer totalResults, Integer totalPages, List<Result> results) {
         super();
         this.page = page;

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -15,12 +16,7 @@ import com.nazirjon.mpvrxjavaretrofitjava.models.Result;
 
 import java.util.List;
 
-/**
- * Created by anujgupta on 26/12/17.
- */
-
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHolder> {
-
     List<Result> movieList;
     Context context;
 
@@ -29,20 +25,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public MoviesHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.row_movies,parent,false);
-        MoviesHolder mh = new MoviesHolder(v);
-        return mh;
+    public MoviesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.row_movies, parent, false);
+        return new MoviesHolder(v);
     }
 
     @Override
     public void onBindViewHolder(MoviesHolder holder, int position) {
-
         holder.tvTitle.setText(movieList.get(position).getTitle());
         holder.tvOverview.setText(movieList.get(position).getOverview());
         holder.tvReleaseDate.setText(movieList.get(position).getReleaseDate());
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+movieList.get(position).getPosterPath()).into(holder.ivMovie);
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" +
+                movieList.get(position).getPosterPath()).into(holder.ivMovie);
     }
 
     @Override
@@ -50,9 +46,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
         return movieList.size();
     }
 
-    public class MoviesHolder extends RecyclerView.ViewHolder {
-
-        TextView tvTitle,tvOverview,tvReleaseDate;
+    public static class MoviesHolder extends RecyclerView.ViewHolder {
+        TextView tvTitle, tvOverview, tvReleaseDate;
         ImageView ivMovie;
 
         public MoviesHolder(View v) {
