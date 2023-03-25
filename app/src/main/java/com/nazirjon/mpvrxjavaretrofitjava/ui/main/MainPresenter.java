@@ -24,29 +24,32 @@ public class MainPresenter implements MainPresenterInterface {
     public void getMovies() {
         getObservable().subscribeWith(getObserver());
     }
-    public Observable<MovieResponse> getObservable(){
+
+    public Observable<MovieResponse> getObservable() {
         return NetworkClient.getRetrofit().create(NetworkInterface.class)
-                            .getMovies("004cbaf19212094e32aa9ef6f6577f22")
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread());
+                .getMovies("004cbaf19212094e32aa9ef6f6577f22")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public DisposableObserver<MovieResponse> getObserver(){
+    public DisposableObserver<MovieResponse> getObserver() {
         return new DisposableObserver<MovieResponse>() {
             @Override
             public void onNext(@NonNull MovieResponse movieResponse) {
-                Log.d(TAG,"OnNext"+movieResponse.getTotalResults());
+                Log.d(TAG, "OnNext" + movieResponse.getTotalResults());
                 mvi.displayMovies(movieResponse);
             }
+
             @Override
             public void onError(@NonNull Throwable e) {
-                Log.d(TAG,"Error"+e);
+                Log.d(TAG, "Error" + e);
                 e.printStackTrace();
                 mvi.displayError("Error fetching Movie Data");
             }
+
             @Override
             public void onComplete() {
-                Log.d(TAG,"Completed");
+                Log.d(TAG, "Completed");
                 mvi.hideProgressBar();
             }
         };

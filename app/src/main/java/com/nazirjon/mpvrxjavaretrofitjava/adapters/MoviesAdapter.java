@@ -52,10 +52,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
 
         public MoviesHolder(View v) {
             super(v);
-            tvTitle = (TextView) v.findViewById(R.id.tvTitle);
-            tvOverview = (TextView) v.findViewById(R.id.tvOverView);
-            tvReleaseDate = (TextView) v.findViewById(R.id.tvReleaseDate);
-            ivMovie = (ImageView) v.findViewById(R.id.ivMovie);
+            tvTitle = v.findViewById(R.id.tvTitle);
+            tvOverview = v.findViewById(R.id.tvOverView);
+            tvReleaseDate = v.findViewById(R.id.tvReleaseDate);
+            ivMovie = v.findViewById(R.id.ivMovie);
         }
     }
 }
