@@ -3,7 +3,6 @@ package com.nazirjon.mpvrxjavaretrofitjava;
 import android.app.Application;
 
 import com.nazirjon.mpvrxjavaretrofitjava.di.components.ApplicationComponent;
-import com.nazirjon.mpvrxjavaretrofitjava.di.components.DaggerApplicationComponent;
 import com.nazirjon.mpvrxjavaretrofitjava.di.modules.ApplicationModule;
 
 public class MyApplication extends Application {

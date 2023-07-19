@@ -2,11 +2,11 @@ plugins {
     id 'com.android.application'
 }
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.nazirjon.mpvrxjavaretrofitjava"
         minSdkVersion 16
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -23,11 +23,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.nazirjon.mpvrxjavaretrofitjava'
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -50,15 +51,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     //Glide
     //noinspection GradleDynamicVersion,GradleDependency
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
 
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
     //Dagger2
-    implementation 'com.google.dagger:dagger:2.44.2'
-    annotationProcessor "com.google.dagger:dagger-compiler:2.44.2"
-    implementation "com.google.dagger:dagger-android:2.43.2"
-    implementation 'com.google.dagger:dagger-android-support:2.43.2'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.43.2'
+    implementation 'com.google.dagger:dagger:2.47'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.47'
+    implementation 'com.google.dagger:dagger-android:2.47'
+    implementation 'com.google.dagger:dagger-android-support:2.47'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.47'
 }

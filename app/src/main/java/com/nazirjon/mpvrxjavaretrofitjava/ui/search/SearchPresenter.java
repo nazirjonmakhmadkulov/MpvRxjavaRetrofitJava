@@ -29,21 +29,7 @@ public class SearchPresenter implements SearchPresenterInterface {
     @SuppressLint("CheckResult")
     @Override
     public void getResultsBasedOnQuery(SearchView searchView) {
-        getObservableQuery(searchView).filter(new Predicate<String>() {
-            @Override
-            public boolean test(@NonNull String s) throws Exception {
-                if (s.equals("")) {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        }).debounce(2, TimeUnit.SECONDS).distinctUntilChanged().switchMap(new Function<String, ObservableSource<MovieResponse>>() {
-            @Override
-            public Observable<MovieResponse> apply(@NonNull String s) throws Exception {
-                return NetworkClient.getRetrofit().create(NetworkInterface.class).getMoviesBasedOnQuery("004cbaf19212094e32aa9ef6f6577f22", s);
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeWith(getObserver());
+        getObservableQuery(searchView).filter(s -> !s.equals("")).debounce(2, TimeUnit.SECONDS).distinctUntilChanged().switchMap((Function<String, ObservableSource<MovieResponse>>) s -> NetworkClient.getRetrofit().create(NetworkInterface.class).getMoviesBasedOnQuery("004cbaf19212094e32aa9ef6f6577f22", s)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribeWith(getObserver());
     }
 
     private Observable<String> getObservableQuery(SearchView searchView) {

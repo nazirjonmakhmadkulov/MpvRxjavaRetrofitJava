@@ -37,13 +37,11 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     RecyclerView.Adapter adapter;
     MainPresenter mainPresenter;
 
-    //RecyclerView rvMovies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //rvMovies = (RecyclerView) findViewById(R.id.rvMovies);
         setupMVP();
         setupViews();
         getMovieList();
@@ -113,7 +111,5 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
+    public void onPointerCaptureChanged(boolean hasCapture) {}
 }

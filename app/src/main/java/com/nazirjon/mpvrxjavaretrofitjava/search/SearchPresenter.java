@@ -33,16 +33,7 @@ public class SearchPresenter implements SearchPresenterInterface {
     @Override
     public void getResultsBasedOnQuery(SearchView searchView) {
         getObservableQuery(searchView)
-                .filter(new Predicate<String>() {
-                    @Override
-                    public boolean test(@NonNull String s) throws Exception {
-                        if (s.equals("")) {
-                            return false;
-                        } else {
-                            return true;
-                        }
-                    }
-                })
+                .filter(s -> !s.equals(""))
                 .debounce(2, TimeUnit.SECONDS)
                 .distinctUntilChanged()
                 .switchMap((Function<String, ObservableSource<MovieResponse>>) s -> NetworkClient.getRetrofit().create(NetworkInterface.class)
