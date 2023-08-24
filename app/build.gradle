@@ -2,11 +2,11 @@ plugins {
     id 'com.android.application'
 }
 android {
-    compileSdkVersion 34
+    compileSdk 34
     defaultConfig {
         applicationId "com.nazirjon.mpvrxjavaretrofitjava"
-        minSdkVersion 16
-        targetSdkVersion 34
+        minSdk 16
+        targetSdk 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -15,7 +15,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -39,22 +39,18 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     //RxJava2
-    //noinspection GradleDynamicVersion
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
-    //noinspection GradleDynamicVersion
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    //noinspection GradleDynamicVersion
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    //Glide
-    //noinspection GradleDynamicVersion,GradleDependency
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
 
-    def multidex_version = "2.0.1"
-    implementation "androidx.multidex:multidex:$multidex_version"
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    implementation "androidx.multidex:multidex:2.0.1"
 
     //Dagger2
     implementation 'com.google.dagger:dagger:2.47'
